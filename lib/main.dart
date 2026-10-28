@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/login_screen.dart';
 import 'screens/mygames.dart';
 import 'screens/myfilm.dart';
 
@@ -12,18 +13,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ESPRIT Store',
+      title: 'G-Store ESPRIT',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.cyan),
         useMaterial3: true,
       ),
-      home: const MainNavigationScreen(),
+      // Démarrage sur la page de connexion (Login)
+      home: const LoginScreen(),
     );
   }
 }
 
-// Écran principal avec barre de navigation inférieure (Jeux & Films)
+// Écran principal après connexion avec barre de navigation (Jeux & Films)
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -34,7 +36,6 @@ class MainNavigationScreen extends StatefulWidget {
 class _MainNavigationScreenState extends State<MainNavigationScreen> {
   int _currentIndex = 0;
 
-  // Les deux écrans créés dans lib/screens/
   final List<Widget> _screens = const [
     MyGames(),
     Myfilm(),

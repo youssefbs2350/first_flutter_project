@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../card.dart';
+import '../services/auth_service.dart';
 import 'cart_screen.dart';
+import 'login_screen.dart';
 
 // Modèle Jeu
 class Game {
@@ -186,6 +188,17 @@ class _MyGamesState extends State<MyGames> {
             icon: const Icon(Icons.refresh, color: Colors.white),
             tooltip: 'Recharger',
             onPressed: _refreshGames,
+          ),
+          IconButton(
+            icon: const Icon(Icons.logout, color: Colors.white),
+            tooltip: 'Déconnexion',
+            onPressed: () {
+              AuthService.logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
           ),
           // Icône du chariot avec badge du nombre d'articles réservés
           Stack(
