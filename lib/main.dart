@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'screens/login_screen.dart';
 import 'screens/mygames.dart';
+import 'screens/gamestore.dart';
 import 'screens/myfilm.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// Écran principal après connexion avec barre de navigation (Jeux & Films)
+// Écran principal après connexion avec barre de navigation (Jeux Liste, Grille, Films)
 class MainNavigationScreen extends StatefulWidget {
   const MainNavigationScreen({super.key});
 
@@ -38,6 +39,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
 
   final List<Widget> _screens = const [
     MyGames(),
+    Gamestore(),
     Myfilm(),
   ];
 
@@ -54,10 +56,15 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
         },
         selectedItemColor: Colors.cyan.shade800,
         unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.sports_esports),
-            label: 'Jeux (G-Store)',
+            icon: Icon(Icons.list_alt),
+            label: 'Jeux (Liste)',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.grid_view),
+            label: 'Grille (G-Store)',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.movie),
